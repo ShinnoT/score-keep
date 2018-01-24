@@ -24,6 +24,11 @@ const pluralPoints = score => {
   }
 };
 
+// const removePlayer = (event, playerID) => {
+//   event.preventDefault();
+//   Players.remove({ _id: playerID });
+// };
+
 const renderPlayers = playersList => {
   if (playersList.lenghth === 0) {
     return null;
@@ -32,6 +37,9 @@ const renderPlayers = playersList => {
     return (
       <p key={player._id}>
         {player.name} has {pluralPoints(player.score)}
+        <button>+1</button>
+        <button>-1</button>
+        <button onClick={() => Players.remove({ _id: player._id })}>X</button>
       </p>
     );
   });
