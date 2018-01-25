@@ -13,6 +13,8 @@ import { Meteor } from "meteor/meteor";
 import { Tracker } from "meteor/tracker";
 
 import { Players } from "./../imports/api/players";
+import { TitleBar } from "./../imports/ui/TitleBar";
+import { AddPlayer } from "./../imports/ui/AddPlayer";
 
 const pluralPoints = score => {
   if (score == 0) {
@@ -57,19 +59,6 @@ const renderPlayers = playersList => {
   });
 };
 
-const handleSubmit = event => {
-  event.preventDefault();
-  // event.target === HTML form with onSubmit property so:
-  let playerName = event.target.playerName.value;
-  if (playerName) {
-    event.target.playerName.value = null;
-    Players.insert({
-      name: playerName,
-      score: 0
-    });
-  }
-};
-
 Meteor.startup(() => {
   Tracker.autorun(() => {
     let players = Players.find().fetch();
@@ -78,19 +67,11 @@ Meteor.startup(() => {
     // js can only contain one root element (a parent div or something that encloses everything)
     let jsx = (
       <div>
-        <h1>{title}</h1>
+        <TitleBar title={title} />
         {/* can include array inside handlebars to generate each element automatically (auto-iterate) */}
         {/* however each element must have unique key inside handlebars */}
         {renderPlayers(players)}
-        <form onSubmit={handleSubmit}>
-          <input
-            type="text"
-            name="playerName"
-            placeholder="Player Name"
-            autoFocus
-          />
-          <button>Add Player</button>
-        </form>
+        <AddPlayer />
       </div>
     );
     ReactDOM.render(jsx, document.querySelector("#app"));
