@@ -15,21 +15,13 @@ import { Tracker } from "meteor/tracker";
 import { Players } from "./../imports/api/players";
 import { TitleBar } from "./../imports/ui/TitleBar";
 import { AddPlayer } from "./../imports/ui/AddPlayer";
-import { Player } from "./../imports/ui/Player";
+// import { Player } from "./../imports/ui/Player";
+import { PlayerList } from "./../imports/ui/PlayerList";
 
 // const removePlayer = (event, playerID) => {
 //   event.preventDefault();
 //   Players.remove({ _id: playerID });
 // };
-
-const renderPlayers = playersList => {
-  if (playersList.lenghth === 0) {
-    return null;
-  }
-  return playersList.map(player => {
-    return <Player key={player._id} player={player} />;
-  });
-};
 
 Meteor.startup(() => {
   Tracker.autorun(() => {
@@ -42,7 +34,7 @@ Meteor.startup(() => {
         <TitleBar title={title} />
         {/* can include array inside handlebars to generate each element automatically (auto-iterate) */}
         {/* however each element must have unique key inside handlebars */}
-        {renderPlayers(players)}
+        <PlayerList players={players} />
         <AddPlayer />
       </div>
     );
