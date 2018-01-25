@@ -1,5 +1,6 @@
 import React from "react";
 import { Players } from "./../api/players";
+import PropTypes from "prop-types";
 
 // const handleSubmit = event => {
 //   event.preventDefault();

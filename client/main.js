@@ -15,16 +15,7 @@ import { Tracker } from "meteor/tracker";
 import { Players } from "./../imports/api/players";
 import { TitleBar } from "./../imports/ui/TitleBar";
 import { AddPlayer } from "./../imports/ui/AddPlayer";
-
-const pluralPoints = score => {
-  if (score == 0) {
-    return "no points";
-  } else if (score > 1 || score < -1) {
-    return `${score} points`;
-  } else {
-    return `${score} point`;
-  }
-};
+import { Player } from "./../imports/ui/Player";
 
 // const removePlayer = (event, playerID) => {
 //   event.preventDefault();
@@ -36,26 +27,7 @@ const renderPlayers = playersList => {
     return null;
   }
   return playersList.map(player => {
-    return (
-      <p key={player._id}>
-        {player.name} has {pluralPoints(player.score)}
-        <button
-          onClick={() => {
-            Players.update({ _id: player._id }, { $inc: { score: 1 } });
-          }}
-        >
-          +1
-        </button>
-        <button
-          onClick={() => {
-            Players.update({ _id: player._id }, { $inc: { score: -1 } });
-          }}
-        >
-          -1
-        </button>
-        <button onClick={() => Players.remove({ _id: player._id })}>X</button>
-      </p>
-    );
+    return <Player key={player._id} player={player} />;
   });
 };
 
