@@ -12,11 +12,8 @@ import ReactDOM from "react-dom";
 import { Meteor } from "meteor/meteor";
 import { Tracker } from "meteor/tracker";
 
+import { App } from "./../imports/ui/App";
 import { Players } from "./../imports/api/players";
-import { TitleBar } from "./../imports/ui/TitleBar";
-import { AddPlayer } from "./../imports/ui/AddPlayer";
-// import { Player } from "./../imports/ui/Player";
-import { PlayerList } from "./../imports/ui/PlayerList";
 
 // const removePlayer = (event, playerID) => {
 //   event.preventDefault();
@@ -29,15 +26,19 @@ Meteor.startup(() => {
     //JSX --> JavaScript XML
     let title = "Score Keeper";
     // js can only contain one root element (a parent div or something that encloses everything)
-    let jsx = (
-      <div>
-        <TitleBar title={title} />
-        {/* can include array inside handlebars to generate each element automatically (auto-iterate) */}
-        {/* however each element must have unique key inside handlebars */}
-        <PlayerList players={players} />
-        <AddPlayer />
-      </div>
+    // let jsx = (
+    //   <div>
+    //     <TitleBar title={title} />
+    //     {/* can include array inside handlebars to generate each element automatically (auto-iterate) */}
+    //     {/* however each element must have unique key inside handlebars */}
+    //     <PlayerList players={players} />
+    //     <AddPlayer />
+    //   </div>
+    // );
+    // ReactDOM.render(jsx, document.querySelector("#app"));
+    ReactDOM.render(
+      <App players={players} title={title} />,
+      document.querySelector("#app")
     );
-    ReactDOM.render(jsx, document.querySelector("#app"));
   });
 });
