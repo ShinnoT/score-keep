@@ -31,15 +31,18 @@ export class AddPlayer extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <input
-          type="text"
-          name="playerName"
-          placeholder="Player Name"
-          autoFocus
-        />
-        <button>Add Player</button>
-      </form>
+      <div className="item">
+        <form className="form" onSubmit={this.handleSubmit}>
+          <input
+            className="form__input"
+            type="text"
+            name="playerName"
+            placeholder="Player Name"
+            autoFocus
+          />
+          <button className="button">Add Player</button>
+        </form>
+      </div>
     );
   }
 }

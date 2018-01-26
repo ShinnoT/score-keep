@@ -1,0 +1,35 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 62.5%;
+  //font-size = 10pixels
+}
+
+body {
+  color: #555555;
+  font-family: Helvetica, Arial, sans-serif;
+  background: #f2f2f2;
+  font-size: 1.6rem;
+}
+
+input,
+button,
+select {
+  font-size: 1.3rem;
+}
+
+h1 {
+  font-weight: 300;
+  font-size: 2.4rem;
+  //2.4rem of 10px is 24px
+}
+
+@import "./components/title-bar";
+@import "./components/wrapper";
+@import "./components/item";
+@import "./components/button";
+@import "./components/player";
+@import "./components/form";
