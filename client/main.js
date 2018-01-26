@@ -22,7 +22,14 @@ import { Players } from "./../imports/api/players";
 
 Meteor.startup(() => {
   Tracker.autorun(() => {
-    let players = Players.find().fetch();
+    let players = Players.find(
+      {},
+      {
+        sort: {
+          score: -1
+        }
+      }
+    ).fetch();
     //JSX --> JavaScript XML
     let title = "Score Keeper";
     // js can only contain one root element (a parent div or something that encloses everything)
