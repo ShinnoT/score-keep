@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 import { TitleBar } from "./TitleBar";
 import { AddPlayer } from "./AddPlayer";
@@ -16,3 +17,8 @@ export class App extends React.Component {
     );
   }
 }
+
+App.propTypes = {
+  title: PropTypes.string.isRequired,
+  players: PropTypes.array.isRequired
+};
