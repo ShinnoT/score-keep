@@ -13,7 +13,7 @@ import { Meteor } from "meteor/meteor";
 import { Tracker } from "meteor/tracker";
 
 import { App } from "./../imports/ui/App";
-import { Players } from "./../imports/api/players";
+import { Players, calculatePlayerPositions } from "./../imports/api/players";
 
 // const removePlayer = (event, playerID) => {
 //   event.preventDefault();
@@ -30,6 +30,7 @@ Meteor.startup(() => {
         }
       }
     ).fetch();
+    let positionedPlayers = calculatePlayerPositions(players);
     //JSX --> JavaScript XML
     let title = "Score Keeper";
     // js can only contain one root element (a parent div or something that encloses everything)
@@ -44,7 +45,7 @@ Meteor.startup(() => {
     // );
     // ReactDOM.render(jsx, document.querySelector("#app"));
     ReactDOM.render(
-      <App players={players} title={title} />,
+      <App players={positionedPlayers} title={title} />,
       document.querySelector("#app")
     );
   });

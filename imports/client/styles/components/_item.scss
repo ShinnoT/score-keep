@@ -5,6 +5,19 @@
   padding: 1.3rem;
 }
 
+.item--position-1 {
+  background: #fccd74;
+  box-shadow: 0 0 10px rgba($color: #ffe058, $alpha: 0.7);
+}
+
+.item--position-2 {
+  background: #adffcf;
+}
+
+.item--position-3 {
+  background: #ffaddd;
+}
+
 .item__message {
   font-size: 1.3rem;
   font-style: italic;

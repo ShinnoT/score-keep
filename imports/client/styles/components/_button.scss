@@ -1,5 +1,5 @@
 .button {
-  background: white;
+  background: transparent;
   color: #555555;
   cursor: pointer;
   font-weight: 600;
@@ -23,6 +23,7 @@
 }
 
 .button--round {
+  border: 1px solid rgb(224, 224, 224);
   border-radius: 50%;
   height: 4rem;
   width: 4rem;
